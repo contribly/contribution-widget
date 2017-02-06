@@ -9,7 +9,7 @@ function contriblyInitContribution(span, artifactFormat) {
 
      contriblyjQuery.ajax({
         type: 'GET',
-        url: contriblyApi + "/contributions/" + requestedContribution, // TODO escaping
+        url: contriblyApi + "/contributions/" + encodeURIComponent(requestedContribution),
         success: function(contribution) {
             span.append('<h1>' + contribution.headline + '</h1>');
 
@@ -19,12 +19,15 @@ function contriblyInitContribution(span, artifactFormat) {
             }) : null;
             var thumbnail = artifact ? '<p><img src="' + artifact.url + '" /></p>' : "";
 	    span.append(thumbnail);
-	   
-	    span.append("<p>" + contribution.created + "</p>");
-
-            if (contribution.place) {
-		span.append("<p>" + contribution.place + "</p>");
+	 
+	    var attributesBar = contriblyjQuery("<div>");
+	    var username = contribution.via.authority.user ? contribution.via.authority.user.displayName : "Anonymous";
+            attributesBar.append(username);
+	    attributesBar.append(" | " + contribution.created);
+            if (contribution.place && contribution.place.name) {
+		attributesBar.append(" | " + contribution.place.name);
 	    }
+	    span.append(attributesBar);
 		
 	    if(contribution.body) {
 	    	span.append('<p>' + contribution.body + '</p>');
