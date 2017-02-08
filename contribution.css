@@ -1,0 +1,35 @@
+.contribly .contribution {
+    font-family: serif;
+}
+
+.contribly .contribution h1 {
+    color: black;
+    font-size: 14pt;
+}
+
+.contribly .contribution .body {
+    color: black;
+    font-size: 12pt;
+}
+
+.contribly .contribution .attributes {
+    font-family: sans-serif;
+    color: #666;
+    font-size: 10pt;
+}
+
+.contribly .contribution ul {
+    list-style-type: none;
+    margin: 2pt;
+    padding: 0;
+}
+
+.contribly .contribution li  {
+    float: left;
+    margin-right: 10pt;
+}
+
+.contribly .contribution .body {
+    margin-top: 20pt;
+    clear: both
+}
